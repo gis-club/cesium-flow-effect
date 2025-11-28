@@ -1,0 +1,11 @@
+import{G as c}from"./lil-gui.esm-CNIGZg2U.js";import{d as u,n as f,h as d,j as p,o as g}from"./index-DdDzk9ui.js";import{_ as h}from"./_plugin-vue_export-helper-DlAUqK2U.js";class o{name;definitionChanged;url;duration;_time;isConstant=!1;constructor(e,t,n){this.name=e,this.definitionChanged=new Cesium.Event,this.url=n,this.duration=t||3e3,this._time=new Date().getTime(),Cesium.Material._materialCache.addMaterial("LineMaterialProperty",{fabric:{type:"LineMaterialProperty",uniforms:{time:-20,image:this.url},source:`
+            czm_material czm_getMaterial(czm_materialInput materialInput)
+            {
+                czm_material material = czm_getDefaultMaterial(materialInput);
+                vec2 st = materialInput.st;
+                vec4 colorImage = texture(image, vec2(fract(st.s - time), st.t));
+                material.alpha = colorImage.a;
+                material.diffuse = colorImage.rgb;
+                return material;
+            }
+      `},translucent:function(i){return!0}})}getType(){return"LineMaterialProperty"}getValue(e,t){return Cesium.defined(t)||(t={}),t.image=this.url,t.time=(new Date().getTime()-this._time)%this.duration/this.duration,t}equals(e){return e instanceof o&&this.name===e.name}}const _=a=>{const e=new Cesium.Viewer(a,{animation:!1,baseLayerPicker:!1,fullscreenButton:!1,geocoder:!1,homeButton:!1,infoBox:!1,sceneModePicker:!1,timeline:!1,navigationHelpButton:!1});return e.creditDisplay.container.style.display="none",C(e),e},C=async a=>{const e=new c;fetch("./思茅区.geojson").then(t=>t.json()).then(t=>{console.log(t);const n=[];t.features.forEach(r=>{r.geometry.coordinates.forEach(s=>{s.forEach(m=>{m.forEach(l=>{n.push(...l)})})})});const i=new o("line",1e3,"./line.png");a.entities.add({name:"line",polyline:{positions:Cesium.Cartesian3.fromDegreesArray(n),material:i,width:5}}),e.add(i,"duration").name("duration").min(0).max(1e4).step(100).onChange(r=>{i.duration=r}),e.add(i,"url").name("url").onChange(r=>{i.url=r}),a.zoomTo(a.entities)})},y=u({__name:"1-material-image",setup(a){const e=f("cesiumContainer");return d(()=>{_(e.value)}),(t,n)=>(g(),p("div",{ref_key:"cesiumContainer",ref:e,id:"cesiumContainer"},null,512))}}),w=h(y,[["__scopeId","data-v-2720571b"]]);export{w as default};

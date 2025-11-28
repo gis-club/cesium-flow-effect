@@ -1,0 +1,12 @@
+import{G as u}from"./lil-gui.esm-CNIGZg2U.js";import{d as f,n as d,h,j as p,o as g}from"./index-DdDzk9ui.js";import{_ as C}from"./_plugin-vue_export-helper-DlAUqK2U.js";class s{name;definitionChanged;url;duration;_time;color;isConstant=!1;constructor(e,t,a,r){this.name=e,this.definitionChanged=new Cesium.Event,this.url=a,this.duration=t||3e3,this._time=new Date().getTime(),this.color=r,Cesium.Material._materialCache.addMaterial("LineMaterialProperty",{fabric:{type:"LineMaterialProperty",uniforms:{time:-20,image:this.url,color:this.color},source:`
+            czm_material czm_getMaterial(czm_materialInput materialInput)
+            {
+                czm_material material = czm_getDefaultMaterial(materialInput);
+                vec2 st = materialInput.st;
+                vec4 colorImage = texture(image, vec2(fract(st.s - time), st.t));
+                vec4 value = mix(color, colorImage, colorImage.a);
+                material.alpha = value.a;
+                material.diffuse = value.rgb;
+                return material;
+            }
+      `},translucent:function(o){return!0}})}getType(){return"LineMaterialProperty"}getValue(e,t){return Cesium.defined(t)||(t={}),t.image=this.url,t.color=this.color,t.time=(new Date().getTime()-this._time)%this.duration/this.duration,t}equals(e){return e instanceof s&&this.name===e.name}}const _=n=>{const e=new Cesium.Viewer(n,{animation:!1,baseLayerPicker:!1,fullscreenButton:!1,geocoder:!1,homeButton:!1,infoBox:!1,sceneModePicker:!1,timeline:!1,navigationHelpButton:!1});return e.creditDisplay.container.style.display="none",y(e),e},y=async n=>{const e=new u,t={color:"#000000"};fetch("./思茅区.geojson").then(a=>a.json()).then(a=>{console.log(a);const r=[];a.features.forEach(i=>{i.geometry.coordinates.forEach(l=>{l.forEach(m=>{m.forEach(c=>{r.push(...c)})})})});const o=new s("line",1e3,"./line.png",Cesium.Color.fromCssColorString(t.color));n.entities.add({name:"line",polyline:{positions:Cesium.Cartesian3.fromDegreesArray(r),material:o,width:5}}),e.add(o,"duration").name("duration").min(0).max(1e4).step(100).onChange(i=>{o.duration=i}),e.add(o,"url").name("url").onChange(i=>{o.url=i}),e.addColor(t,"color").onChange(i=>{o.color=Cesium.Color.fromCssColorString(i)}),n.zoomTo(n.entities)})},v=f({__name:"2-material-color",setup(n){const e=d("cesiumContainer");return h(()=>{_(e.value)}),(t,a)=>(g(),p("div",{ref_key:"cesiumContainer",ref:e,id:"cesiumContainer"},null,512))}}),x=C(v,[["__scopeId","data-v-ab78dca1"]]);export{x as default};
