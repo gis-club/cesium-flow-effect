@@ -1,17 +1,16 @@
-import type { IBreadcrumbRouterStruct } from './BreadcrumbRouterStruct'
+import type { Component } from 'vue'
 
 interface IChildrenStruct {
-    path: string,
-    name: string,
-    meta?: IBreadcrumbRouterStruct | undefined,
-    component: () => Promise<typeof import('*.vue')>
+  path: string
+  name: string
+  component: () => Promise<{ default: Component }>
 }
 
 export interface IRouterStruct {
-    index: string,
-    path: string,
-    name: string,
-    redirect?: string,
-    component: () => Promise<typeof import('*.vue')>
-    children: IChildrenStruct[]
+  index: string
+  path: string
+  name: string
+  redirect?: string
+  component: () => Promise<{ default: Component }>
+  children: IChildrenStruct[]
 }
