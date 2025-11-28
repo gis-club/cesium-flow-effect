@@ -1,4 +1,4 @@
-import{G as s}from"./lil-gui.esm-CNIGZg2U.js";import{d as l,n as m,h as c,j as u,o as d}from"./index-DdDzk9ui.js";import{_ as f}from"./_plugin-vue_export-helper-DlAUqK2U.js";const h=`// 从顶点着色器传入的折线角度，用于对齐纹理
+import{G as s}from"./lil-gui.esm-CNIGZg2U.js";import{d as l,n as m,h as c,j as u,o as d}from"./index-Bn89_75I.js";import{_ as f}from"./_plugin-vue_export-helper-DlAUqK2U.js";const h=`// 从顶点着色器传入的折线角度，用于对齐纹理
 in float v_polylineAngle;
 
 /**
