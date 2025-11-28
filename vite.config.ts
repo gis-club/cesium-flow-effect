@@ -8,6 +8,7 @@ import cesium from 'vite-plugin-cesium'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue(), vueDevTools(), cesium()],
+  base: './',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
